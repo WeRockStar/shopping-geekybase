@@ -64,8 +64,8 @@ public class ProductConfirmFragment extends Fragment implements OrderPresenter.O
         String description = edtDescription.getText().toString();
 
         progressDialog.setMessage("Loading..");
-        builder.setMessage("คุณยืนยันการทำรายการหรือไม่?");
         btnConfirm.setOnClickListener(v -> {
+            builder.setMessage("คุณยืนยันการทำรายการหรือไม่?");
             builder.setPositiveButton("ตกลง", (dialog, which) -> {
                 progressDialog.show();
                 presenter.order(getProduct(), firstName, lastName,
@@ -90,6 +90,9 @@ public class ProductConfirmFragment extends Fragment implements OrderPresenter.O
     public void render(Tracking trackingNumber) {
         progressDialog.dismiss();
         builder.setMessage("Tracking number : " + trackingNumber.getCode() + "\n" + trackingNumber.getDesc());
+        builder.setPositiveButton("ตกลง", (dialog, which) -> {
+
+        });
         builder.show();
     }
 
@@ -100,6 +103,9 @@ public class ProductConfirmFragment extends Fragment implements OrderPresenter.O
     @Override
     public void error(String msg) {
         builder.setMessage("Error นะจ๊ะ : " + msg);
+        builder.setPositiveButton("ตกลง", (dialog, which) -> {
+
+        });
         builder.show();
         progressDialog.dismiss();
     }
