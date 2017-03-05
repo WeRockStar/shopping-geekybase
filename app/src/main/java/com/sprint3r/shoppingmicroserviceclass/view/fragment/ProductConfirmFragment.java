@@ -2,6 +2,7 @@ package com.sprint3r.shoppingmicroserviceclass.view.fragment;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -15,6 +16,7 @@ import com.sprint3r.shoppingmicroserviceclass.R;
 import com.sprint3r.shoppingmicroserviceclass.domain.Product;
 import com.sprint3r.shoppingmicroserviceclass.domain.Tracking;
 import com.sprint3r.shoppingmicroserviceclass.presenter.OrderPresenter;
+import com.sprint3r.shoppingmicroserviceclass.view.activity.MainActivity;
 
 public class ProductConfirmFragment extends Fragment implements OrderPresenter.OrderView {
 
@@ -91,7 +93,8 @@ public class ProductConfirmFragment extends Fragment implements OrderPresenter.O
         progressDialog.dismiss();
         builder.setMessage("Tracking number : " + trackingNumber.getCode() + "\n" + trackingNumber.getDesc());
         builder.setPositiveButton("ตกลง", (dialog, which) -> {
-
+            ((MainActivity) getActivity()).finish();
+            startActivity(new Intent(getContext(), MainActivity.class));
         });
         builder.show();
     }
