@@ -7,11 +7,12 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public interface ShoppingApi {
     @GET("/products")
     Observable<List<Product>> getAllProduct();
 
     @GET("/product/{id}")
-    Observable<Product> getProduct(Long id);
+    Observable<Product> getProduct(@Path("id") Long id);
 }
