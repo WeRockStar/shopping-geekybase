@@ -1,6 +1,7 @@
 package com.sprint3r.shoppingmicroserviceclass.view.fragment;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -20,11 +21,13 @@ public class ProductConfirmFragment extends Fragment implements OrderPresenter.O
 
     OrderPresenter presenter;
 
-    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+    AlertDialog.Builder builder;
+    ProgressDialog progressDialog;
     Button btnConfirm;
     EditText edtFirstName;
     EditText edtLastName;
     EditText edtDescription;
+    EditText edtAddress;
 
     public static ProductConfirmFragment newInstance(Product products) {
         Bundle args = new Bundle();
@@ -43,30 +46,48 @@ public class ProductConfirmFragment extends Fragment implements OrderPresenter.O
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_confirm, container, false);
 
+        progressDialog = new ProgressDialog(getContext());
+        builder = new AlertDialog.Builder(getContext());
         presenter = new OrderPresenter();
         presenter.setView(this);
 
-        btnConfirm = (Button) view.findViewById(R.id.btnConfirm);
-        edtFirstName = (EditText) view.findViewById(R.id.edtFirstName);
-        edtLastName = (EditText) view.findViewById(R.id.edtLastName);
-        edtDescription = (EditText) view.findViewById(R.id.edtDescription);
+        initialView(view);
+        confirmOrder();
+        return view;
+    }
 
+    private void confirmOrder() {
+        String fristName = edtFirstName.getText().toString();
+        String lastName = edtLastName.getText().toString();
+        String address = edtAddress.getText().toString();
+        String description = edtDescription.getText().toString();
+
+        progressDialog.setMessage("Loading..");
         builder.setMessage("คุณยืนยันการทำรายการหรือไม่?");
         btnConfirm.setOnClickListener(v -> {
             builder.setPositiveButton("ตกลง", (dialog, which) -> {
-                // presenter.order(getProduct());
+                progressDialog.show();
+                presenter.order(getProduct(), fristName, lastName,
+                        address, description);
             });
             builder.setNegativeButton("ยกเลิก", (dialog, which) -> {
             });
 
             builder.show();
         });
+    }
 
-        return view;
+    private void initialView(View view) {
+        btnConfirm = (Button) view.findViewById(R.id.btnConfirm);
+        edtFirstName = (EditText) view.findViewById(R.id.edtFirstName);
+        edtLastName = (EditText) view.findViewById(R.id.edtLastName);
+        edtDescription = (EditText) view.findViewById(R.id.edtDescription);
+        edtAddress = (EditText) view.findViewById(R.id.edtAddress);
     }
 
     @Override
     public void render(String trackingNumber) {
+        progressDialog.dismiss();
         builder.setMessage("Tracking number : " + trackingNumber);
         builder.show();
     }
@@ -77,6 +98,6 @@ public class ProductConfirmFragment extends Fragment implements OrderPresenter.O
 
     @Override
     public void error(String msg) {
-
+        progressDialog.dismiss();
     }
 }
