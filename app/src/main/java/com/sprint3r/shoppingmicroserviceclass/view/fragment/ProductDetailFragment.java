@@ -7,12 +7,14 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.sprint3r.shoppingmicroserviceclass.R;
 import com.sprint3r.shoppingmicroserviceclass.domain.Product;
+import com.sprint3r.shoppingmicroserviceclass.view.activity.MainActivity;
 
 
 public class ProductDetailFragment extends Fragment {
@@ -24,6 +26,7 @@ public class ProductDetailFragment extends Fragment {
     TextView tvProductType;
     ImageView ivProductPhoto;
     TextView tvProductDescription;
+    Button btnBuy;
 
 
     public static ProductDetailFragment newInstance(Product products) {
@@ -67,6 +70,11 @@ public class ProductDetailFragment extends Fragment {
         tvProductType = (TextView) view.findViewById(R.id.tvProductType);
         ivProductPhoto = (ImageView) view.findViewById(R.id.ivProductImage);
         tvProductDescription = (TextView) view.findViewById(R.id.tvProductDescription);
+        btnBuy = (Button) view.findViewById(R.id.btnBuy);
+
+        btnBuy.setOnClickListener(v -> {
+            ((MainActivity) getActivity()).goToProductConfirm(getProduct());
+        });
     }
 
     public Product getProduct() {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.sprint3r.shoppingmicroserviceclass.R;
 import com.sprint3r.shoppingmicroserviceclass.domain.Product;
+import com.sprint3r.shoppingmicroserviceclass.view.fragment.ProductConfirmFragment;
 import com.sprint3r.shoppingmicroserviceclass.view.fragment.ProductDetailFragment;
 import com.sprint3r.shoppingmicroserviceclass.view.fragment.ProductListFragment;
 
@@ -30,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
     public void goToProductDetail(Product product) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.containProduct, ProductDetailFragment.newInstance(product))
+                .addToBackStack(STACK_NAME)
+                .commit();
+    }
+
+    public void goToProductConfirm(Product product) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.containProduct, ProductConfirmFragment.newInstance(product))
                 .addToBackStack(STACK_NAME)
                 .commit();
     }

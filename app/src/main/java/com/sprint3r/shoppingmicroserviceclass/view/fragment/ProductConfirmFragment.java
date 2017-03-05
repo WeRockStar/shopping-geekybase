@@ -8,9 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sprint3r.shoppingmicroserviceclass.R;
+import com.sprint3r.shoppingmicroserviceclass.domain.Product;
 
 public class ProductConfirmFragment extends Fragment {
 
+    private static final String EXTRA_PRODUCT = "EXTRA_PRODUCT";
+
+    public static ProductConfirmFragment newInstance(Product products) {
+        Bundle args = new Bundle();
+        ProductConfirmFragment fragment = new ProductConfirmFragment();
+        args.putParcelable(EXTRA_PRODUCT, products);
+        fragment.setArguments(args);
+        return fragment;
+    }
     public ProductConfirmFragment() {
     }
 
