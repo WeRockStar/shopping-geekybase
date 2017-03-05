@@ -58,15 +58,15 @@ public class ProductConfirmFragment extends Fragment implements OrderPresenter.O
     }
 
     private void confirmOrder() {
-        String firstName = edtFirstName.getText().toString();
-        String lastName = edtLastName.getText().toString();
-        String address = edtAddress.getText().toString();
-        String description = edtDescription.getText().toString();
 
         progressDialog.setMessage("Loading..");
         btnConfirm.setOnClickListener(v -> {
             builder.setMessage("คุณยืนยันการทำรายการหรือไม่?");
             builder.setPositiveButton("ตกลง", (dialog, which) -> {
+                String firstName = edtFirstName.getText().toString();
+                String lastName = edtLastName.getText().toString();
+                String address = edtAddress.getText().toString();
+                String description = edtDescription.getText().toString();
                 progressDialog.show();
                 presenter.order(getProduct(), firstName, lastName,
                         address, description);
