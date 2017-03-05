@@ -57,7 +57,7 @@ public class ProductConfirmFragment extends Fragment implements OrderPresenter.O
     }
 
     private void confirmOrder() {
-        String fristName = edtFirstName.getText().toString();
+        String firstName = edtFirstName.getText().toString();
         String lastName = edtLastName.getText().toString();
         String address = edtAddress.getText().toString();
         String description = edtDescription.getText().toString();
@@ -67,7 +67,7 @@ public class ProductConfirmFragment extends Fragment implements OrderPresenter.O
         btnConfirm.setOnClickListener(v -> {
             builder.setPositiveButton("ตกลง", (dialog, which) -> {
                 progressDialog.show();
-                presenter.order(getProduct(), fristName, lastName,
+                presenter.order(getProduct(), firstName, lastName,
                         address, description);
             });
             builder.setNegativeButton("ยกเลิก", (dialog, which) -> {
