@@ -20,7 +20,7 @@ import com.sprint3r.shoppingmicroserviceclass.view.activity.MainActivity;
 import java.util.List;
 
 
-public class ProductListFragment extends Fragment implements ProductListAdapter.OnClickProduct, ProductListPresenter.ShoppingListView {
+public class ProductListFragment extends Fragment implements ProductListAdapter.OnClickProduct, ProductListPresenter.ProductListView {
 
 
     RecyclerView recyclerView;

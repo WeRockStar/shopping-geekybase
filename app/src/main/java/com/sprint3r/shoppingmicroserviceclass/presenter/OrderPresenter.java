@@ -1,24 +1,23 @@
 package com.sprint3r.shoppingmicroserviceclass.presenter;
 
-import com.sprint3r.shoppingmicroserviceclass.domain.Product;
 import com.sprint3r.shoppingmicroserviceclass.service.RetrofitService;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class ProductDetailPresenter {
-    public interface ProductDetailView {
-        void render(Product product);
+public class OrderPresenter {
+    public interface OrderView {
+        void render(String trackingNumber);
         void error(String msg);
     }
 
-    private ProductDetailView view;
-    public void setView(ProductDetailView view) {
+    private OrderView view;
+    public void setView(OrderView view) {
         this.view = view;
     }
 
-    public void getProduct(Long id) {
-        RetrofitService.getProduct(id)
+    public void order(Long productId, Double price, String customerName, String description) {
+        RetrofitService.order(productId, price, customerName, description)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

@@ -1,5 +1,6 @@
 package com.sprint3r.shoppingmicroserviceclass.service;
 
+import com.sprint3r.shoppingmicroserviceclass.domain.Order;
 import com.sprint3r.shoppingmicroserviceclass.domain.Product;
 
 import java.util.List;
@@ -32,12 +33,21 @@ public class RetrofitService {
         return api;
     }
 
-    public Observable<List<Product>> getAllProduct() {
+    public static Observable<List<Product>> getAllProduct() {
         return getApi().getAllProduct();
     }
 
-    public Observable<Product> getProduct(Long id) {
+    public static Observable<Product> getProduct(Long id) {
         return getApi().getProduct(id);
+    }
+
+    public static Observable<String> order(Long productId, Double price, String customerName, String description) {
+        Order order = new Order();
+        order.setId(productId);
+        order.setPrice(price.floatValue());
+        order.setName(customerName);
+        order.setDesc(description);
+        return getApi().order(order);
     }
 
     public static void main(String[] args) {

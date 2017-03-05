@@ -10,19 +10,19 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ProductListPresenter {
 
-    public interface ShoppingListView {
+    public interface ProductListView {
         void render(List<Product> products);
         void error(String msg);
     }
 
-    private ShoppingListView view;
+    private ProductListView view;
 
-    public void setView(ShoppingListView view) {
+    public void setView(ProductListView view) {
         this.view = view;
     }
 
     public void listProduct() {
-        RetrofitService.getApi().getAllProduct()
+        RetrofitService.getAllProduct()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
