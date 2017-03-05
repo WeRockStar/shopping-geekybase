@@ -1,13 +1,57 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.sprint3r.shoppingmicroserviceclass.ProductDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/ivProductImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="180dp"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/ic_launcher" />
 
-</FrameLayout>
+
+    <TextView
+        android:id="@+id/tvProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        tools:text="ksdkfsdlfglsdkgjlksdjgjsdg" />
+
+    <TextView
+        android:id="@+id/tvProductType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
+        android:textColor="#000"
+        android:textSize="18sp"
+        tools:text="ksdkfsdlfglsdkgjlksdjgjsdg" />
+
+    <TextView
+        android:id="@+id/tvProductPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
+        android:textColor="#000"
+        android:textSize="18sp"
+        tools:text="ksdkfsdlfglsdkgjlksdjgjsdg" />
+
+    <TextView
+        android:id="@+id/tvProductDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
+        android:textColor="#000"
+        android:textSize="18sp"
+        tools:text="ksdkfsdlfglsdkgjlksdjgjsdg" />
+
+</LinearLayout>

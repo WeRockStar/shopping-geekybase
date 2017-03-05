@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <ImageView
@@ -20,13 +20,14 @@
         android:paddingLeft="8dp"
         android:paddingStart="8dp"
         android:textColor="#000"
-        android:textSize="18sp"
+        android:textSize="20sp"
         tools:text="ksdkfsdlfglsdkgjlksdjgjsdg" />
 
     <TextView
         android:id="@+id/tvProductType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:paddingLeft="8dp"
         android:paddingStart="8dp"
         android:textColor="#000"

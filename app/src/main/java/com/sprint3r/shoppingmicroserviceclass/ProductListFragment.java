@@ -32,6 +32,10 @@ public class ProductListFragment extends Fragment {
 
         initialView(view);
         setUpRecyclerView();
+
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+
+        });
         return view;
     }
 
@@ -42,10 +46,18 @@ public class ProductListFragment extends Fragment {
 
     private void setUpRecyclerView() {
         List<String> product = new ArrayList<>();
-        adapter = new ProductListAdapter();
+        product.add("Hello");
+        product.add("Hello");
+        product.add("Hello");
+        product.add("Hello");
+        product.add("Hello");
+        product.add("Hello");
+        product.add("Hello");
+        adapter = new ProductListAdapter(getContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(adapter);
         adapter.setProduct(product);
+        adapter.notifyDataSetChanged();
     }
 }
