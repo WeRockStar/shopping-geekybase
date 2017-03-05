@@ -10,7 +10,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitService {
-    private static String BASE_URL = "http://localhost:8080";
+    private static String BASE_URL = "http://10.0.1.24:8080";
     private static Retrofit retrofit;
     private static ShoppingApi api;
 
@@ -45,7 +45,7 @@ public class RetrofitService {
         api.getAllProduct()
                 .subscribe(
                         list -> {
-                            System.out.println(list.size());
+                            System.out.println(list.size() + list.get(0).getDescription());
                         },
                         Throwable::printStackTrace,
                         () -> System.out.println("com")
