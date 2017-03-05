@@ -22,7 +22,7 @@ public class OrderPresenter {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        list -> view.render(list),
+                        tracking -> view.render(tracking),
                         t -> view.error(t.getMessage())
                 );
     }

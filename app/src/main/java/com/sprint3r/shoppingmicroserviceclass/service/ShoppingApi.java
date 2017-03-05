@@ -3,6 +3,7 @@ package com.sprint3r.shoppingmicroserviceclass.service;
 
 import com.sprint3r.shoppingmicroserviceclass.domain.Order;
 import com.sprint3r.shoppingmicroserviceclass.domain.Product;
+import com.sprint3r.shoppingmicroserviceclass.domain.Tracking;
 
 import java.util.List;
 
@@ -20,5 +21,5 @@ public interface ShoppingApi {
     Observable<Product> getProduct(@Path("id") Long id);
 
     @POST("/order")
-    Observable<String> order(@Body Order order);
+    Observable<Tracking> order(@Body Order order);
 }

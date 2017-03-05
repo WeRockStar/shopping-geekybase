@@ -1,19 +1,19 @@
 package com.sprint3r.shoppingmicroserviceclass.domain;
 
 public class Order {
-    private Long id;
+    private String name;
     private Float price;
     private String desc;
     private String fristName;
     private String lastName;
     private String address;
 
-    public Long getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Float getPrice() {
