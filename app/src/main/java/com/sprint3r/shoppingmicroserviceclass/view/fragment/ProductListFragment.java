@@ -67,7 +67,7 @@ public class ProductListFragment extends Fragment implements ProductListAdapter.
 
     @Override
     public void onClickProductItem(Product product) {
-        ((MainActivity) getActivity()).goToProductDetail(this);
+        ((MainActivity) getActivity()).goToProductDetail(product);
     }
 
     @Override

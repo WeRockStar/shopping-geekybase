@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.sprint3r.shoppingmicroserviceclass.R;
+import com.sprint3r.shoppingmicroserviceclass.domain.Product;
+import com.sprint3r.shoppingmicroserviceclass.view.fragment.ProductDetailFragment;
 import com.sprint3r.shoppingmicroserviceclass.view.fragment.ProductListFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public void goToProductDetail(Fragment fragment) {
+    public void goToProductDetail(Product product) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.containProduct, fragment)
+                .replace(R.id.containProduct, ProductDetailFragment.newInstance(product))
                 .addToBackStack(STACK_NAME)
                 .commit();
     }

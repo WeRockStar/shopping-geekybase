@@ -1,7 +1,11 @@
 package com.sprint3r.shoppingmicroserviceclass.domain;
 
 
-public class Product {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Product implements Parcelable {
+
     private Long id;
     private String name;
     private String type;
@@ -56,4 +60,44 @@ public class Product {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeString(this.name);
+        dest.writeString(this.type);
+        dest.writeString(this.imageUrl);
+        dest.writeString(this.description);
+        dest.writeValue(this.price);
+    }
+
+    public Product() {
+    }
+
+    protected Product(Parcel in) {
+        this.id = (Long) in.readValue(Long.class.getClassLoader());
+        this.name = in.readString();
+        this.type = in.readString();
+        this.imageUrl = in.readString();
+        this.description = in.readString();
+        this.price = (Double) in.readValue(Double.class.getClassLoader());
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel source) {
+            return new Product(source);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 }
