@@ -10,10 +10,32 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/edtName"
+            android:id="@+id/edtFirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ชื่อ - นาสกุล" />
+            android:hint="ชื่อ" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edtLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="นาสกุล" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="รายละเอียด" />
     </android.support.design.widget.TextInputLayout>
 
 
@@ -25,8 +47,8 @@
             android:id="@+id/edtAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ที่อยู่"
             android:gravity="top"
+            android:hint="ที่อยู่"
             android:minLines="3" />
     </android.support.design.widget.TextInputLayout>
 
