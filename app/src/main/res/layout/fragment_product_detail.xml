@@ -54,4 +54,12 @@
         android:textSize="18sp"
         tools:text="ksdkfsdlfglsdkgjlksdjgjsdg" />
 
+    <Button
+        android:id="@+id/btnBuy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:text="ซื้อสินค้า" />
+
 </LinearLayout>

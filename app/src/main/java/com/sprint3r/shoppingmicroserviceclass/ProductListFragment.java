@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProductListFragment extends Fragment {
+public class ProductListFragment extends Fragment implements ProductListAdapter.OnClickProduct {
 
 
     RecyclerView recyclerView;
@@ -53,11 +53,18 @@ public class ProductListFragment extends Fragment {
         product.add("Hello");
         product.add("Hello");
         product.add("Hello");
+
         adapter = new ProductListAdapter(getContext());
+        adapter.setListener(this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(adapter);
         adapter.setProduct(product);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onClickProductItem(String dummy) {
+        ((MainActivity) getActivity()).goToProductDetail(this);
     }
 }

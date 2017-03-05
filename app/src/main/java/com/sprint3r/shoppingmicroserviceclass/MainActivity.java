@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
-    private void goToProductDetail(Fragment fragment) {
+    public void goToProductDetail(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.containProduct, fragment)
                 .addToBackStack(STACK_NAME)

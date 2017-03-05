@@ -1,11 +1,13 @@
 package com.sprint3r.shoppingmicroserviceclass;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -16,6 +18,10 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     private List<String> product;
     private Context context;
+    private OnClickProduct listener;
+    public void setListener(OnClickProduct listener) {
+        this.listener = listener;
+    }
 
     public ProductListAdapter(Context context) {
         this.context = context;
@@ -44,6 +50,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                 .crossFade()
                 .placeholder(R.mipmap.ic_launcher)
                 .into(holder.ivProductPhoto);
+
+        holder.productBox.setOnClickListener(v -> listener.onClickProductItem(p));
     }
 
     @Override
@@ -57,6 +65,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         TextView tvProductPrice;
         TextView tvProductType;
         ImageView ivProductPhoto;
+        CardView productBox;
 
 
         public ProductListViewHolder(View itemView) {
@@ -66,6 +75,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             tvProductPrice = (TextView) itemView.findViewById(R.id.tvProductPrice);
             tvProductType = (TextView) itemView.findViewById(R.id.tvProductType);
             ivProductPhoto = (ImageView) itemView.findViewById(R.id.ivProductImage);
+            productBox = (CardView) itemView.findViewById(R.id.product_box);
         }
+    }
+
+    public interface OnClickProduct {
+        void onClickProductItem(String dummy);
     }
 }
