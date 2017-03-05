@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sprint3r.shoppingmicroserviceclass.R;
 import com.sprint3r.shoppingmicroserviceclass.domain.Product;
 
@@ -41,19 +42,31 @@ public class ProductDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_detail, container, false);
 
-        tvProductName = (TextView) view.findViewById(R.id.tvProductName);
-        tvProductPrice = (TextView) view.findViewById(R.id.tvProductPrice);
-        tvProductType = (TextView) view.findViewById(R.id.tvProductType);
-        ivProductPhoto = (ImageView) view.findViewById(R.id.ivProductImage);
-        tvProductDescription = (TextView) view.findViewById(R.id.tvProductDescription);
+        initialView(view);
+        displayProductDescription();
 
+        return view;
+    }
+
+    private void displayProductDescription() {
         tvProductName.setText(getProduct().getName());
         tvProductPrice.setText(getProduct().getPrice() + "");
         tvProductType.setText(getProduct().getType());
         tvProductDescription.setText(getProduct().getDescription());
 
+        Glide.with(getContext())
+                .load(getProduct().getImageUrl())
+                .placeholder(R.mipmap.ic_launcher)
+                .crossFade()
+                .into(ivProductPhoto);
+    }
 
-        return view;
+    private void initialView(View view) {
+        tvProductName = (TextView) view.findViewById(R.id.tvProductName);
+        tvProductPrice = (TextView) view.findViewById(R.id.tvProductPrice);
+        tvProductType = (TextView) view.findViewById(R.id.tvProductType);
+        ivProductPhoto = (ImageView) view.findViewById(R.id.ivProductImage);
+        tvProductDescription = (TextView) view.findViewById(R.id.tvProductDescription);
     }
 
     public Product getProduct() {

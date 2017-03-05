@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -67,7 +68,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         TextView tvProductPrice;
         TextView tvProductType;
         ImageView ivProductPhoto;
-        CardView productBox;
+        LinearLayout productBox;
 
 
         public ProductListViewHolder(View itemView) {
@@ -77,7 +78,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             tvProductPrice = (TextView) itemView.findViewById(R.id.tvProductPrice);
             tvProductType = (TextView) itemView.findViewById(R.id.tvProductType);
             ivProductPhoto = (ImageView) itemView.findViewById(R.id.ivProductImage);
-            productBox = (CardView) itemView.findViewById(R.id.product_box);
+            productBox = (LinearLayout) itemView.findViewById(R.id.product_box);
         }
     }
 
