@@ -23,8 +23,8 @@ public class ProductListPresenter {
 
     public void listProduct() {
         RetrofitService.getApi().getAllProduct()
-                .observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         list -> view.render(list),
                         t -> view.error(t.getMessage())

@@ -11,14 +11,16 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.sprint3r.shoppingmicroserviceclass.R;
+import com.sprint3r.shoppingmicroserviceclass.domain.Product;
 
 import java.util.List;
 
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ProductListViewHolder> {
 
-    private List<String> product;
+    private List<Product> productList;
     private Context context;
     private OnClickProduct listener;
+
     public void setListener(OnClickProduct listener) {
         this.listener = listener;
     }
@@ -27,8 +29,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         this.context = context;
     }
 
-    public void setProduct(List<String> product) {
-        this.product = product;
+    public void setProduct(List<Product> product) {
+        this.productList = product;
     }
 
     public ProductListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -39,24 +41,24 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     @Override
     public void onBindViewHolder(ProductListViewHolder holder, int position) {
 
-        String p = product.get(position);
+        Product product = productList.get(position);
 
-        holder.tvProductName.setText(p);
-        holder.tvProductType.setText("");
-        holder.tvProductPrice.setText("");
+        holder.tvProductName.setText(product.getName());
+        holder.tvProductType.setText(product.getType());
+        holder.tvProductPrice.setText(String.valueOf(product.getPrice()));
 
         Glide.with(context)
-                .load("")
+                .load(product.getImageUrl())
                 .crossFade()
                 .placeholder(R.mipmap.ic_launcher)
                 .into(holder.ivProductPhoto);
 
-        holder.productBox.setOnClickListener(v -> listener.onClickProductItem(p));
+        holder.productBox.setOnClickListener(v -> listener.onClickProductItem(product));
     }
 
     @Override
     public int getItemCount() {
-        return product == null ? 0 : product.size();
+        return productList == null ? 0 : productList.size();
     }
 
     public class ProductListViewHolder extends RecyclerView.ViewHolder {
@@ -80,6 +82,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     }
 
     public interface OnClickProduct {
-        void onClickProductItem(String dummy);
+        void onClickProductItem(Product product);
     }
 }

@@ -9,20 +9,24 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.sprint3r.shoppingmicroserviceclass.R;
+import com.sprint3r.shoppingmicroserviceclass.domain.Product;
+import com.sprint3r.shoppingmicroserviceclass.presenter.ProductListPresenter;
 import com.sprint3r.shoppingmicroserviceclass.view.activity.MainActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProductListFragment extends Fragment implements ProductListAdapter.OnClickProduct {
+public class ProductListFragment extends Fragment implements ProductListAdapter.OnClickProduct, ProductListPresenter.ShoppingListView {
 
 
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
     ProductListAdapter adapter;
+
+    ProductListPresenter presenter;
 
     public ProductListFragment() {
     }
@@ -33,8 +37,13 @@ public class ProductListFragment extends Fragment implements ProductListAdapter.
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_list, container, false);
 
+        presenter = new ProductListPresenter();
+        presenter.setView(this);
+        presenter.listProduct();
+
         initialView(view);
         setUpRecyclerView();
+
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
 
@@ -48,26 +57,27 @@ public class ProductListFragment extends Fragment implements ProductListAdapter.
     }
 
     private void setUpRecyclerView() {
-        List<String> product = new ArrayList<>();
-        product.add("Hello");
-        product.add("Hello");
-        product.add("Hello");
-        product.add("Hello");
-        product.add("Hello");
-        product.add("Hello");
-        product.add("Hello");
-
         adapter = new ProductListAdapter(getContext());
         adapter.setListener(this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(adapter);
-        adapter.setProduct(product);
+    }
+
+
+    @Override
+    public void onClickProductItem(Product product) {
+        ((MainActivity) getActivity()).goToProductDetail(this);
+    }
+
+    @Override
+    public void render(List<Product> products) {
+        adapter.setProduct(products);
         adapter.notifyDataSetChanged();
     }
 
     @Override
-    public void onClickProductItem(String dummy) {
-        ((MainActivity) getActivity()).goToProductDetail(this);
+    public void error(String msg) {
+        Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
     }
 }
