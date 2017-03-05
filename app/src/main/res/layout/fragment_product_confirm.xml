@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ที่อยู่"
+            android:gravity="top"
             android:minLines="3" />
     </android.support.design.widget.TextInputLayout>
 

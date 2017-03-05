@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.sprint3r.shoppingmicroserviceclass.R;
+import com.sprint3r.shoppingmicroserviceclass.adapter.ProductListAdapter;
 import com.sprint3r.shoppingmicroserviceclass.domain.Product;
 import com.sprint3r.shoppingmicroserviceclass.presenter.ProductListPresenter;
 import com.sprint3r.shoppingmicroserviceclass.view.activity.MainActivity;

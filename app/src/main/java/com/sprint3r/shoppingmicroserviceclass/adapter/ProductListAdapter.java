@@ -1,7 +1,6 @@
-package com.sprint3r.shoppingmicroserviceclass.view.fragment;
+package com.sprint3r.shoppingmicroserviceclass.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.sprint3r.shoppingmicroserviceclass.R;
 import com.sprint3r.shoppingmicroserviceclass.domain.Product;
 
@@ -51,6 +51,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         Glide.with(context)
                 .load(product.getImageUrl())
                 .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .placeholder(R.mipmap.ic_launcher)
                 .into(holder.ivProductPhoto);
 
