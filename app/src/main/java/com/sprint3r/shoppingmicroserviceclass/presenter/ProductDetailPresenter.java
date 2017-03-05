@@ -19,6 +19,7 @@ public class ProductDetailPresenter {
 
     public void getProduct(Long id) {
         RetrofitService.getProduct(id)
+                .doOnError(Throwable::printStackTrace)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

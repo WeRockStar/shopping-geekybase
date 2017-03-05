@@ -20,6 +20,7 @@ public class OrderPresenter {
 
     public void order(Product product, String firstName, String lastName, String address, String description) {
         RetrofitService.order(product, firstName, lastName, address, description)
+                .doOnError(Throwable::printStackTrace)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

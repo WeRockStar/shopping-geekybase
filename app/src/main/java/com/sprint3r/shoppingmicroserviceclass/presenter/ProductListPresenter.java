@@ -23,6 +23,7 @@ public class ProductListPresenter {
 
     public void listProduct() {
         RetrofitService.getAllProduct()
+                .doOnError(Throwable::printStackTrace)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
