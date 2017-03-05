@@ -20,6 +20,6 @@ public interface ShoppingApi {
     @GET("/product/{id}")
     Observable<Product> getProduct(@Path("id") Long id);
 
-    @POST("http://10.0.1.24:9090")
+    @POST("http://10.0.1.24:9090/orderProduct")
     Observable<Tracking> order(@Body Order order);
 }
