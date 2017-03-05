@@ -10,12 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ProductListFragment extends Fragment {
 
 
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
+    ProductListAdapter adapter;
 
     public ProductListFragment() {
     }
@@ -37,7 +41,11 @@ public class ProductListFragment extends Fragment {
     }
 
     private void setUpRecyclerView() {
+        List<String> product = new ArrayList<>();
+        adapter = new ProductListAdapter();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerView.setAdapter(adapter);
+        adapter.setProduct(product);
     }
 }
