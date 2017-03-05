@@ -40,10 +40,10 @@ public class ProductListFragment extends Fragment implements ProductListAdapter.
 
         presenter = new ProductListPresenter();
         presenter.setView(this);
-        presenter.listProduct();
-
         initialView(view);
         setUpRecyclerView();
+
+        presenter.listProduct();
 
 
         swipeRefreshLayout.setOnRefreshListener(() -> {

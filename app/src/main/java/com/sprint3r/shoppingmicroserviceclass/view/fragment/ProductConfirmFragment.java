@@ -99,6 +99,8 @@ public class ProductConfirmFragment extends Fragment implements OrderPresenter.O
 
     @Override
     public void error(String msg) {
+        builder.setMessage("Error นะจ๊ะ : " + msg);
+        builder.show();
         progressDialog.dismiss();
     }
 }
