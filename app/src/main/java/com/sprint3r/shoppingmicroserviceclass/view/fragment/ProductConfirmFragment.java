@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import com.sprint3r.shoppingmicroserviceclass.R;
 import com.sprint3r.shoppingmicroserviceclass.domain.Product;
+import com.sprint3r.shoppingmicroserviceclass.domain.Tracking;
 import com.sprint3r.shoppingmicroserviceclass.presenter.OrderPresenter;
 
 public class ProductConfirmFragment extends Fragment implements OrderPresenter.OrderView {
@@ -86,9 +87,9 @@ public class ProductConfirmFragment extends Fragment implements OrderPresenter.O
     }
 
     @Override
-    public void render(String trackingNumber) {
+    public void render(Tracking trackingNumber) {
         progressDialog.dismiss();
-        builder.setMessage("Tracking number : " + trackingNumber);
+        builder.setMessage("Tracking number : " + trackingNumber.getCode() + "\n" + trackingNumber.getDesc());
         builder.show();
     }
 

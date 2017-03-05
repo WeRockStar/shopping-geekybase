@@ -1,6 +1,7 @@
 package com.sprint3r.shoppingmicroserviceclass.presenter;
 
 import com.sprint3r.shoppingmicroserviceclass.domain.Product;
+import com.sprint3r.shoppingmicroserviceclass.domain.Tracking;
 import com.sprint3r.shoppingmicroserviceclass.service.RetrofitService;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -8,7 +9,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class OrderPresenter {
     public interface OrderView {
-        void render(String trackingNumber);
+        void render(Tracking trackingNumber);
         void error(String msg);
     }
 
