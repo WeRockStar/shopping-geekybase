@@ -46,7 +46,7 @@ public class ProductListFragment extends Fragment implements ProductListAdapter.
 
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
-
+            presenter.listProduct();
         });
         return view;
     }
@@ -74,10 +74,12 @@ public class ProductListFragment extends Fragment implements ProductListAdapter.
     public void render(List<Product> products) {
         adapter.setProduct(products);
         adapter.notifyDataSetChanged();
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
     public void error(String msg) {
         Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
+        swipeRefreshLayout.setRefreshing(false);
     }
 }
