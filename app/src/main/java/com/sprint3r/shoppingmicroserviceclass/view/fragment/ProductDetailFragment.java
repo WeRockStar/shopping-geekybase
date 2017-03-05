@@ -1,4 +1,4 @@
-package com.sprint3r.shoppingmicroserviceclass;
+package com.sprint3r.shoppingmicroserviceclass.view.fragment;
 
 
 import android.os.Bundle;
@@ -7,16 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ProductConfirmFragment extends Fragment {
+import com.sprint3r.shoppingmicroserviceclass.R;
 
-    public ProductConfirmFragment() {
+
+public class ProductDetailFragment extends Fragment {
+
+
+    public ProductDetailFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_product_confirm, container, false);
+        View view = inflater.inflate(R.layout.fragment_product_detail, container, false);
         return view;
     }
 

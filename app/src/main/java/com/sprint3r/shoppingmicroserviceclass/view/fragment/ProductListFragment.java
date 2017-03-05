@@ -1,4 +1,4 @@
-package com.sprint3r.shoppingmicroserviceclass;
+package com.sprint3r.shoppingmicroserviceclass.view.fragment;
 
 
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.sprint3r.shoppingmicroserviceclass.R;
+import com.sprint3r.shoppingmicroserviceclass.view.activity.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;

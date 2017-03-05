@@ -1,8 +1,11 @@
-package com.sprint3r.shoppingmicroserviceclass;
+package com.sprint3r.shoppingmicroserviceclass.view.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.sprint3r.shoppingmicroserviceclass.R;
+import com.sprint3r.shoppingmicroserviceclass.view.fragment.ProductListFragment;
 
 public class MainActivity extends AppCompatActivity {
 
