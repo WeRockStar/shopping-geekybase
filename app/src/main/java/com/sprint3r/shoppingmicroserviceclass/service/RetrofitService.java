@@ -50,6 +50,7 @@ public class RetrofitService {
 
     public static Observable<Tracking> order(Product product, String firstName, String lastName, String address, String description) {
         Order order = new Order();
+        order.setName(product.getName());
         order.setPrice(product.getPrice().floatValue());
         order.setFristName(firstName);
         order.setLastName(lastName);
