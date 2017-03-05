@@ -41,11 +41,13 @@ public class RetrofitService {
         return getApi().getProduct(id);
     }
 
-    public static Observable<String> order(Product product, String fristName, String lastName, String address, String description) {
+    public static Observable<String> order(Product product, String firstName, String lastName, String address, String description) {
         Order order = new Order();
-//        order.setId(productId);
-//        order.setPrice(price.floatValue());
-//        order.setName(customerName);
+        order.setId(product.getId());
+        order.setPrice(product.getPrice().floatValue());
+        order.setFristName(firstName);
+        order.setLastName(lastName);
+        order.setAddress(address);
         order.setDesc(description);
         return getApi().order(order);
     }

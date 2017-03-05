@@ -6,8 +6,6 @@ import com.sprint3r.shoppingmicroserviceclass.service.RetrofitService;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-import static android.R.attr.description;
-
 public class OrderPresenter {
     public interface OrderView {
         void render(String trackingNumber);
@@ -19,8 +17,8 @@ public class OrderPresenter {
         this.view = view;
     }
 
-    public void order(Product product, String fristName, String lastName, String address, String description) {
-        RetrofitService.order(product, fristName, lastName, address, description)
+    public void order(Product product, String firstName, String lastName, String address, String description) {
+        RetrofitService.order(product, firstName, lastName, address, description)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
